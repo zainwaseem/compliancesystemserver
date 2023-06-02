@@ -1,0 +1,15 @@
+{
+  "name": "compliancesystemserver",
+  "version": "1.0.0",
+  "description": "Compliance Ssystem",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Hina Jadoon",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

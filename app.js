@@ -12,10 +12,16 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 connectDB();
 // import { v2 as cloudinary } from "cloudinary";
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+//   credentials: true,
+// };
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://compliancesys.netlify.app",
   credentials: true,
 };
+// origin: "https://compliancesys.netlify.app/",
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());

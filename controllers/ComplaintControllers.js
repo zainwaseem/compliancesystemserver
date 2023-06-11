@@ -133,7 +133,6 @@ const updateComplaint = async (req, res, next) => {
 };
 const complaintsStatus = async (req, res, next) => {
   const { status } = req.body;
-  console.log(status);
   try {
     await Complaint.findByIdAndUpdate(req.params.id, {
       status,

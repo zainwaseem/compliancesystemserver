@@ -13,7 +13,7 @@ const AddComplaint = async (req, res, next) => {
       complaintRelateName,
       ComplaintName,
       DateResponse,
-      ComplaintDate,
+      complaintDate,
       ComplaintReceived,
       dob,
       ApprovedBy,
@@ -37,7 +37,7 @@ const AddComplaint = async (req, res, next) => {
       complaintRelateName,
       ComplaintName,
       DateResponse,
-      ComplaintDate,
+      complaintDate,
       ComplaintReceived,
       dob,
       ApprovedBy,
@@ -57,7 +57,7 @@ const AddComplaint = async (req, res, next) => {
   }
 };
 
-const getALLComplaints = async (req, res) => {
+const getALLComplaints = async (req, res, next) => {
   try {
     const complaintss = await Complaint.find();
     return res.json(complaintss);
@@ -66,7 +66,7 @@ const getALLComplaints = async (req, res) => {
   }
 };
 
-const getComplaint = async (req, res) => {
+const getComplaint = async (req, res, next) => {
   try {
     const singleComplaint = await Complaint.findById(req.params.id);
     return res.json(singleComplaint);
@@ -75,7 +75,7 @@ const getComplaint = async (req, res) => {
   }
 };
 
-const updateComplaint = async (req, res) => {
+const updateComplaint = async (req, res, next) => {
   const {
     name,
     ComplaintReference,
@@ -87,7 +87,7 @@ const updateComplaint = async (req, res) => {
     complaintRelateName,
     ComplaintName,
     DateResponse,
-    ComplaintDate,
+    complaintDate,
     ComplaintReceived,
     dob,
     ApprovedBy,
@@ -113,7 +113,7 @@ const updateComplaint = async (req, res) => {
       complaintRelateName,
       ComplaintName,
       DateResponse,
-      ComplaintDate,
+      complaintDate,
       ComplaintReceived,
       dob,
       ApprovedBy,
@@ -131,7 +131,21 @@ const updateComplaint = async (req, res) => {
     next(error);
   }
 };
-const deleteComplaint = async (req, res) => {
+const complaintsStatus = async (req, res, next) => {
+  const { status } = req.body;
+  console.log(status);
+  try {
+    await Complaint.findByIdAndUpdate(req.params.id, {
+      status,
+    });
+    return res
+      .status(200)
+      .json({ message: `Complaint Status updated successfully` });
+  } catch (error) {
+    next(error);
+  }
+};
+const deleteComplaint = async (req, res, next) => {
   try {
     await Complaint.findByIdAndDelete(req.params.id);
     return res.json({ message: `Complaint deleted successfully` });
@@ -146,4 +160,5 @@ export {
   getALLComplaints,
   getComplaint,
   AddComplaint,
+  complaintsStatus,
 };

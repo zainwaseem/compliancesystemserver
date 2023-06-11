@@ -6,12 +6,14 @@ import {
   getALLComplaints,
   getComplaint,
   AddComplaint,
+  complaintsStatus,
 } from "../controllers/ComplaintControllers.js";
 
 router.post("/complaints", AddComplaint);
 router.get("/complaints", getALLComplaints);
-router.put("/complaints/:id", getComplaint);
+router.get("/complaints/:id", getComplaint);
 router.put("/complaints/:id", updateComplaint);
+router.patch("/complaintsstatus/:id", complaintsStatus);
 router.delete("/complaints/:id", deleteComplaint);
 
 export default router;

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const complaintSchema = new mongoose.Schema(
   {
     name: { type: String },
+    status: { type: String, default: "pending" },
     complimentReference: { type: String },
     acknowledgementFormat: { type: String },
     natureofComplaint: { type: String },
@@ -12,7 +13,7 @@ const complaintSchema = new mongoose.Schema(
     complimentName: { type: String },
     complimentSummary: { type: String },
     DateResponse: { type: String },
-    complimentDate: { type: String },
+    complaintDate: { type: String },
     ComplaintReceived: { type: String },
     dob: { type: String },
     ApprovedBy: { type: String },

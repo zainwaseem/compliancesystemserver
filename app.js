@@ -6,6 +6,10 @@ import employeeRoutes from "./routes/EmployeeRoutes.js";
 import clientRoutes from "./routes/ClientRoutes.js";
 import complimentRoutes from "./routes/ComplimentRoutes.js";
 import ComplaintRoutes from "./routes/ComplaintRoutes.js";
+import MedicationRoutes from "./routes/MedicationRoutes.js";
+import ReviewsRoutes from "./routes/ReviewsRoutes.js";
+import SafeRoutes from "./routes/SafeRoutes.js";
+import SpotRoutes from "./routes/SpotRoutes.js";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -18,8 +22,8 @@ connectDB();
 //   credentials: true,
 // };
 const corsOptions = {
-  // origin: "http://localhost:3000",
-  origin: "https://compliancesys.netlify.app",
+  origin: "http://localhost:3000",
+  // origin: "https://compliancesys.netlify.app",
   credentials: true,
 };
 // origin: "https://compliancesys.netlify.app/",
@@ -44,6 +48,10 @@ app.use("/api", employeeRoutes);
 app.use("/api", clientRoutes);
 app.use("/api", complimentRoutes);
 app.use("/api", ComplaintRoutes);
+app.use("/api", MedicationRoutes);
+app.use("/api", ReviewsRoutes);
+app.use("/api", SafeRoutes);
+app.use("/api", SpotRoutes);
 
 app.get("*", (req, res) => {
   res.send(`Compliance System Server`);

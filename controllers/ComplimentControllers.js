@@ -42,8 +42,8 @@ const getALLCompliments = async (req, res) => {
 
 const getCompliment = async (req, res) => {
   try {
-    const Compliment = await Compliment.findById(req.params.id);
-    return res.json(Compliment);
+    const singlecompliment = await Compliment.findById(req.params.id);
+    return res.json(singlecompliment);
   } catch (error) {
     console.log(error);
   }

@@ -26,8 +26,8 @@ const getALLClients = async (req, res) => {
 
 const getClient = async (req, res) => {
   try {
-    const Client = await Client.findById(req.params.id);
-    return res.json(Client);
+    const singleClient = await Client.findById(req.params.id);
+    return res.json(singleClient);
   } catch (error) {
     console.log(error);
   }

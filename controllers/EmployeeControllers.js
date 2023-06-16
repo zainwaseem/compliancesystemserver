@@ -24,6 +24,14 @@ const getALLEmployees = async (req, res) => {
   }
 };
 
+const getEmployee = async (req, res) => {
+  try {
+    const singleemp = await Employee.findById(req.params.id);
+    return res.json(singleemp);
+  } catch (error) {
+    console.log(error);
+  }
+};
 const updateEmployee = async (req, res) => {
   const { name, email, phone } = req.body;
 
@@ -51,4 +59,10 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
-export { getALLEmployees, AddEmployee, updateEmployee, deleteEmployee };
+export {
+  getALLEmployees,
+  getEmployee,
+  AddEmployee,
+  updateEmployee,
+  deleteEmployee,
+};

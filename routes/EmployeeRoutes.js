@@ -10,7 +10,7 @@ import {
 
 router.post("/employees", AddEmployee);
 router.get("/employees", getALLEmployees);
-router.put("/employees/:id", updateEmployee);
+router.put("/employees/:id", updateEmployee); //patch
 router.get("/employees/:id", getEmployee);
 router.delete("/employees/:id", deleteEmployee);
 

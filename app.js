@@ -22,8 +22,8 @@ connectDB();
 //   credentials: true,
 // };
 const corsOptions = {
-  // origin: "http://localhost:3000",
-  origin: "https://compliancesys.netlify.app",
+  origin: "http://localhost:3000",
+  // origin: "https://compliancesys.netlify.app",
   credentials: true,
 };
 // origin: "https://compliancesys.netlify.app/",
@@ -44,7 +44,8 @@ app.use((err, req, res, next) => {
   });
 });
 //Routes
-app.use("/api", employeeRoutes);
+app.use("/api", employeeRoutes); // add update delete get
+
 app.use("/api", clientRoutes);
 app.use("/api", complimentRoutes);
 app.use("/api", ComplaintRoutes);

@@ -4,6 +4,7 @@ const AddComplaint = async (req, res, next) => {
   try {
     const {
       name,
+      CpersonName,
       ComplaintReference,
       acknowledgementFormat,
       levelofSecurity,
@@ -28,6 +29,7 @@ const AddComplaint = async (req, res, next) => {
     } = req.body;
     const newComplaint = new Complaint({
       name,
+      CpersonName,
       ComplaintReference,
       acknowledgementFormat,
       levelofSecurity,
@@ -78,6 +80,7 @@ const getComplaint = async (req, res, next) => {
 const updateComplaint = async (req, res, next) => {
   const {
     name,
+    CpersonName,
     ComplaintReference,
     acknowledgementFormat,
     levelofSecurity,
@@ -104,6 +107,7 @@ const updateComplaint = async (req, res, next) => {
   try {
     await Complaint.findByIdAndUpdate(req.params.id, {
       name,
+      CpersonName,
       ComplaintReference,
       acknowledgementFormat,
       levelofSecurity,

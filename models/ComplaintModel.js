@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const complaintSchema = new mongoose.Schema(
   {
     name: { type: String },
+    CpersonName: { type: String },
     status: { type: String, default: "pending" },
     complimentReference: { type: String },
     acknowledgementFormat: { type: String },

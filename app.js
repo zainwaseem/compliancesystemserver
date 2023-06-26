@@ -22,8 +22,8 @@ connectDB();
 //   credentials: true,
 // };
 const corsOptions = {
-  origin: "http://localhost:3000",
-  // origin: "https://compliancesys.netlify.app",
+  // origin: "http://localhost:3000",
+  origin: "https://compliancesys.netlify.app",
   credentials: true,
 };
 // origin: "https://compliancesys.netlify.app/",

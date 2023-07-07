@@ -10,17 +10,14 @@ import MedicationRoutes from "./routes/MedicationRoutes.js";
 import ReviewsRoutes from "./routes/ReviewsRoutes.js";
 import SafeRoutes from "./routes/SafeRoutes.js";
 import SpotRoutes from "./routes/SpotRoutes.js";
+import AppraisalRoutes from "./routes/AppraisalRoutes.js";
+import SupervisionRoutes from "./routes/SupervisionRoutes.js";
+import SafeGuardingRoutes from "./routes/SafeGuardingRoutes.js";
 
 import * as dotenv from "dotenv";
 dotenv.config();
 const app = express();
-app.use(express.json({ limit: "50mb" }));
 connectDB();
-// import { v2 as cloudinary } from "cloudinary";
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-//   credentials: true,
-// };
 const corsOptions = {
   origin: "http://localhost:3000",
   // origin: "https://compliancesys.netlify.app",
@@ -31,7 +28,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
-connectDB();
 // Error Handling
 app.use((err, req, res, next) => {
   const status = err.status || 500;
@@ -53,6 +49,9 @@ app.use("/api", MedicationRoutes);
 app.use("/api", ReviewsRoutes);
 app.use("/api", SafeRoutes);
 app.use("/api", SpotRoutes);
+app.use("/api", AppraisalRoutes);
+app.use("/api", SupervisionRoutes);
+app.use("/api", SafeGuardingRoutes);
 
 app.get("*", (req, res) => {
   res.send(`Compliance System Server`);

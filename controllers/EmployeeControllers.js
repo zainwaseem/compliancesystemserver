@@ -17,8 +17,8 @@ const AddEmployee = async (req, res, next) => {
 
 const getALLEmployees = async (req, res) => {
   try {
-    const employees = await Employee.find();
-    return res.json(employees);
+    const allemployees = await Employee.find();
+    return res.json(allemployees);
   } catch (error) {
     console.log(error);
   }

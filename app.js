@@ -13,6 +13,7 @@ import SpotRoutes from "./routes/SpotRoutes.js";
 import AppraisalRoutes from "./routes/AppraisalRoutes.js";
 import SupervisionRoutes from "./routes/SupervisionRoutes.js";
 import SafeGuardingRoutes from "./routes/SafeGuardingRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -52,6 +53,7 @@ app.use("/api", SpotRoutes);
 app.use("/api", AppraisalRoutes);
 app.use("/api", SupervisionRoutes);
 app.use("/api", SafeGuardingRoutes);
+app.use("/api", userRoutes);
 
 app.get("*", (req, res) => {
   res.send(`Compliance System Server`);

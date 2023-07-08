@@ -18,6 +18,10 @@ const AddClient = async (req, res, next) => {
 const getALLClients = async (req, res) => {
   try {
     const Clients = await Client.find();
+    if (!Clients.ok) {
+      throw new Error(`Error! status: ${Clients.status}`);
+    }
+
     return res.json(Clients);
   } catch (error) {
     console.log(error);

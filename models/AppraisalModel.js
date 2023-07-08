@@ -10,7 +10,7 @@ const appraisalSchema = new mongoose.Schema(
     CompletionTime: { type: String },
     responsibilitiesDuties: { type: String },
     partsJob: { type: String },
-    rows: { type: String },
+    rows: { type: Array, default: [] },
     TechnicalScore: { type: String },
     TechnicalCom: { type: String },
     LegalBestScore: { type: String },
@@ -55,7 +55,7 @@ const appraisalSchema = new mongoose.Schema(
     yourappraiser: { type: String },
     CurrentBusiness: { type: String },
     Recordgathered: { type: String },
-    rows1: { type: String },
+    rows1: { type: Array, default: [] },
     TechnicalScore1: { type: String },
     TechnicalCom1: { type: String },
     LegalBestScore1: { type: String },
@@ -98,7 +98,7 @@ const appraisalSchema = new mongoose.Schema(
     SignatureAppraisee: { type: String },
     SignatureAppraiser: { type: String },
     Name: { type: String },
-    rows2: { type: String },
+    rows2: { type: Array, default: [] },
   },
   { timestamps: true }
 );

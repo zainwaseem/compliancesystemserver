@@ -2,11 +2,47 @@ import SafeGuarding from "../models/SafeGuardingModel.js";
 
 const AddSafeGuarding = async (req, res, next) => {
   try {
-    const { name, email, phone } = req.body;
+    const {
+      serviceuser,
+      branchName,
+      personInvestigating,
+      serviceuserLocation,
+      timeIncident,
+      dateIncident,
+      locationIncident,
+      detailsIncident,
+      nameWitness,
+      medicalAttention,
+      resultInvestigating,
+      NameDesignation,
+      immediateAction,
+      incidentInvestigation,
+      agenciesContacted,
+      RegisteredManager,
+      furtherIncidents,
+      Signature,
+      Datecompletion,
+    } = req.body;
     const newSafeGuarding = new SafeGuarding({
-      name,
-      email,
-      phone,
+      serviceuser,
+      branchName,
+      personInvestigating,
+      serviceuserLocation,
+      timeIncident,
+      dateIncident,
+      locationIncident,
+      detailsIncident,
+      nameWitness,
+      medicalAttention,
+      resultInvestigating,
+      NameDesignation,
+      immediateAction,
+      incidentInvestigation,
+      agenciesContacted,
+      RegisteredManager,
+      furtherIncidents,
+      Signature,
+      Datecompletion,
     });
     await newSafeGuarding.save();
     return res.json({ message: "Record added successfully" });
@@ -34,13 +70,49 @@ const getSafeGuarding = async (req, res) => {
 };
 
 const updateSafeGuarding = async (req, res) => {
-  const { name, email, phone } = req.body;
+  const {
+    serviceuser,
+    branchName,
+    personInvestigating,
+    serviceuserLocation,
+    timeIncident,
+    dateIncident,
+    locationIncident,
+    detailsIncident,
+    nameWitness,
+    medicalAttention,
+    resultInvestigating,
+    NameDesignation,
+    immediateAction,
+    incidentInvestigation,
+    agenciesContacted,
+    RegisteredManager,
+    furtherIncidents,
+    Signature,
+    Datecompletion,
+  } = req.body;
 
   try {
     await SafeGuarding.findByIdAndUpdate(req.params.id, {
-      name,
-      email,
-      phone,
+      serviceuser,
+      branchName,
+      personInvestigating,
+      serviceuserLocation,
+      timeIncident,
+      dateIncident,
+      locationIncident,
+      detailsIncident,
+      nameWitness,
+      medicalAttention,
+      resultInvestigating,
+      NameDesignation,
+      immediateAction,
+      incidentInvestigation,
+      agenciesContacted,
+      RegisteredManager,
+      furtherIncidents,
+      Signature,
+      Datecompletion,
     });
     return res.status(200).json({ message: `Record updated successfully` });
   } catch (error) {

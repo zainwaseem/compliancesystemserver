@@ -15,6 +15,7 @@ import { isAuthenticated, isAuthorized } from "../middleware/auth.js";
 
 router.post("/register", register);
 router.post("/login", login);
+router.get("/users", getALLUsers);
 // router.get("/users", isAuthenticated, isAuthorized("owner"), getALLUsers);
 // router.get("/users/:id", isAuthenticated, isAuthorized("owner"), getUser);
 // router.put("/users/:id", isAuthenticated, isAuthorized("owner"), updateUser);

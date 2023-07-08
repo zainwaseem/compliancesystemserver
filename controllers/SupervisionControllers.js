@@ -1,4 +1,4 @@
-import Supervision from "../models/ClientModel.js";
+import Supervision from "../models/SupervisionModel.js";
 
 const AddSupervision = async (req, res, next) => {
   try {

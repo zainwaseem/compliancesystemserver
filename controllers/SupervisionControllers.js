@@ -1,4 +1,4 @@
-import { HEADER_URL } from "../HeaderUrl.js"
+import { HEADER_URL } from "../HeaderUrl.js";
 import Supervision from "../models/SupervisionModel.js";
 
 const AddSupervision = async (req, res, next) => {
@@ -67,10 +67,7 @@ const AddSupervision = async (req, res, next) => {
     });
 
     await newSupervision.save();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          HEADER_URL
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: "Supervision added successfully" });
   } catch (error) {
@@ -81,10 +78,7 @@ const AddSupervision = async (req, res, next) => {
 const getALLSupervision = async (req, res) => {
   try {
     const supervisions = await Supervision.find();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          HEADER_URL
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(supervisions);
   } catch (error) {
@@ -95,10 +89,7 @@ const getALLSupervision = async (req, res) => {
 const getSupervision = async (req, res) => {
   try {
     const singleSupervision = await Supervision.findById(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          HEADER_URL
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(singleSupervision);
   } catch (error) {
@@ -171,11 +162,7 @@ const updateSupervision = async (req, res) => {
       SignedSupervisee,
       PlannedDate,
     });
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          HEADER_URL
-        );
-
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
     return res
       .status(200)
       .json({ message: `Supervision updated successfully` });
@@ -186,10 +173,7 @@ const updateSupervision = async (req, res) => {
 const deleteSupervision = async (req, res) => {
   try {
     await Supervision.findByIdAndDelete(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          HEADER_URL
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: `Supervision deleted successfully` });
   } catch (error) {

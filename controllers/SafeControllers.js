@@ -79,6 +79,11 @@ const AddSafe = async (req, res, next) => {
       ManagerSignatureDate,
     });
     await newMedication.save();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: "Added successfully" });
   } catch (error) {
     next(error);
@@ -88,6 +93,11 @@ const AddSafe = async (req, res, next) => {
 const getALLSafe = async (req, res) => {
   try {
     const safes = await Safe.find();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(safes);
   } catch (error) {
     console.log(error);
@@ -97,6 +107,11 @@ const getALLSafe = async (req, res) => {
 const getSafe = async (req, res) => {
   try {
     const singlesafe = await Safe.findById(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(singlesafe);
   } catch (error) {
     console.log(error);
@@ -182,6 +197,11 @@ const updateSafe = async (req, res) => {
       RepresentativeSigDate,
       ManagerSignatureDate,
     });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.status(200).json({ message: `Updated successfully` });
   } catch (error) {
     next(error);
@@ -190,6 +210,11 @@ const updateSafe = async (req, res) => {
 const deleteSafe = async (req, res) => {
   try {
     await Safe.findByIdAndDelete(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: `Deleted successfully` });
   } catch (error) {
     next(error);

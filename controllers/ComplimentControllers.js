@@ -25,6 +25,11 @@ const AddCompliment = async (req, res, next) => {
       complimentSummary,
     });
     await newCompliment.save();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: "Compliment added successfully" });
   } catch (error) {
     next(error);
@@ -34,6 +39,11 @@ const AddCompliment = async (req, res, next) => {
 const getALLCompliments = async (req, res) => {
   try {
     const Compliments = await Compliment.find();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(Compliments);
   } catch (error) {
     console.log(error);
@@ -43,6 +53,11 @@ const getALLCompliments = async (req, res) => {
 const getCompliment = async (req, res) => {
   try {
     const singlecompliment = await Compliment.findById(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(singlecompliment);
   } catch (error) {
     console.log(error);
@@ -74,6 +89,11 @@ const updateCompliment = async (req, res) => {
       complimentAction,
       complimentSummary,
     });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.status(200).json({ message: `Compliment updated successfully` });
   } catch (error) {
     next(error);
@@ -82,6 +102,11 @@ const updateCompliment = async (req, res) => {
 const deleteCompliment = async (req, res) => {
   try {
     await Compliment.findByIdAndDelete(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: `Compliment deleted successfully` });
   } catch (error) {
     next(error);

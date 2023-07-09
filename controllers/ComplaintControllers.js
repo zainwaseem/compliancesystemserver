@@ -53,6 +53,11 @@ const AddComplaint = async (req, res, next) => {
       InvestigationPlan,
     });
     await newComplaint.save();
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json({ message: "Complaint added successfully" });
   } catch (error) {
     next(error);
@@ -62,6 +67,11 @@ const AddComplaint = async (req, res, next) => {
 const getALLComplaints = async (req, res, next) => {
   try {
     const complaintss = await Complaint.find();
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json(complaintss);
   } catch (error) {
     console.log(error);
@@ -71,6 +81,11 @@ const getALLComplaints = async (req, res, next) => {
 const getComplaint = async (req, res, next) => {
   try {
     const singleComplaint = await Complaint.findById(req.params.id);
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json(singleComplaint);
   } catch (error) {
     console.log(error);
@@ -130,6 +145,11 @@ const updateComplaint = async (req, res, next) => {
       investigate,
       InvestigationPlan,
     });
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.status(200).json({ message: `Complaint updated successfully` });
   } catch (error) {
     next(error);
@@ -141,6 +161,11 @@ const complaintsStatus = async (req, res, next) => {
     await Complaint.findByIdAndUpdate(req.params.id, {
       status,
     });
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res
       .status(200)
       .json({ message: `Complaint Status updated successfully` });
@@ -151,6 +176,11 @@ const complaintsStatus = async (req, res, next) => {
 const deleteComplaint = async (req, res, next) => {
   try {
     await Complaint.findByIdAndDelete(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: `Complaint deleted successfully` });
   } catch (error) {
     next(error);

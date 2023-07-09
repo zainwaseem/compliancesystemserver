@@ -86,6 +86,10 @@ const getALLUsers = async (req, res, next) => {
   try {
     const users = await User.find();
     // .sort({ name: 1 });
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
 
     return res.json(users);
   } catch (error) {
@@ -94,6 +98,11 @@ const getALLUsers = async (req, res, next) => {
 };
 
 const logout = async (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://compliancesys.netlify.app"
+  );
+
   if (req.cookies)
     return res
       .cookie("token", "", { httpOnly: true, expires: new Date(0) })
@@ -110,6 +119,11 @@ const getUser = async (req, res, next) => {
   }
   try {
     const user = await User.findById(req.params.id);
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json(user);
   } catch (error) {
     next(error);
@@ -133,6 +147,11 @@ const updateUser = async (req, res, next) => {
       },
       { new: true }
     );
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json({ message: `User has been updated` });
   } catch (error) {
     next(error);
@@ -147,6 +166,11 @@ const deleteUser = async (req, res, next) => {
   try {
     const daletedUser = await User.findByIdAndDelete(req.params.id);
     // console.log(daletedUser)
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json({ message: `User has been deleted` });
   } catch (error) {
     next(error);

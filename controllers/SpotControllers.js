@@ -101,6 +101,11 @@ const AddSpot = async (req, res, next) => {
       RecordActionsoutcome,
     });
     await newMedication.save();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: "Added successfully" });
   } catch (error) {
     next(error);
@@ -110,6 +115,11 @@ const AddSpot = async (req, res, next) => {
 const getALLSpot = async (req, res) => {
   try {
     const spots = await Spot.find();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(spots);
   } catch (error) {
     console.log(error);
@@ -119,6 +129,11 @@ const getALLSpot = async (req, res) => {
 const getSpot = async (req, res) => {
   try {
     const singleMedication = await Spot.findById(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(singleMedication);
   } catch (error) {
     console.log(error);
@@ -226,6 +241,11 @@ const updateSpot = async (req, res) => {
       Carercomingvisit,
       RecordActionsoutcome,
     });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.status(200).json({ message: `Updated successfully` });
   } catch (error) {
     next(error);

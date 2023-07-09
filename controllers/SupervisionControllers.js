@@ -64,7 +64,13 @@ const AddSupervision = async (req, res, next) => {
       SignedSupervisee,
       PlannedDate,
     });
+
     await newSupervision.save();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: "Supervision added successfully" });
   } catch (error) {
     next(error);
@@ -74,6 +80,11 @@ const AddSupervision = async (req, res, next) => {
 const getALLSupervision = async (req, res) => {
   try {
     const supervisions = await Supervision.find();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(supervisions);
   } catch (error) {
     console.log(error);
@@ -83,6 +94,11 @@ const getALLSupervision = async (req, res) => {
 const getSupervision = async (req, res) => {
   try {
     const singleSupervision = await Supervision.findById(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(singleSupervision);
   } catch (error) {
     console.log(error);
@@ -154,6 +170,11 @@ const updateSupervision = async (req, res) => {
       SignedSupervisee,
       PlannedDate,
     });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res
       .status(200)
       .json({ message: `Supervision updated successfully` });
@@ -164,6 +185,11 @@ const updateSupervision = async (req, res) => {
 const deleteSupervision = async (req, res) => {
   try {
     await Supervision.findByIdAndDelete(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: `Supervision deleted successfully` });
   } catch (error) {
     next(error);

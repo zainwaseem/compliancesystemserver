@@ -52,13 +52,7 @@ app.use((err, req, res, next) => {
   });
 });
 //Routes
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://compliancesys.netlify.app"
-  );
-  next();
-});
+
 app.use("/api", employeeRoutes); // add update delete get
 
 app.use("/api", clientRoutes);

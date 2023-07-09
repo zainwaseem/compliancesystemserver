@@ -71,6 +71,11 @@ const AddReview = async (req, res, next) => {
       branchactions,
     });
     await newMedication.save();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: "Added successfully" });
   } catch (error) {
     next(error);
@@ -80,6 +85,11 @@ const AddReview = async (req, res, next) => {
 const getALLReview = async (req, res) => {
   try {
     const Reviews = await Review.find();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(Reviews);
   } catch (error) {
     console.log(error);
@@ -89,6 +99,11 @@ const getALLReview = async (req, res) => {
 const getReview = async (req, res) => {
   try {
     const singleMedication = await Review.findById(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(singleMedication);
   } catch (error) {
     console.log(error);
@@ -166,6 +181,11 @@ const updateReview = async (req, res) => {
       recommended,
       branchactions,
     });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.status(200).json({ message: `Updated successfully` });
   } catch (error) {
     next(error);
@@ -174,6 +194,11 @@ const updateReview = async (req, res) => {
 const deleteReview = async (req, res) => {
   try {
     await Review.findByIdAndDelete(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: `Deleted successfully` });
   } catch (error) {
     next(error);

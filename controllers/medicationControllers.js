@@ -45,6 +45,11 @@ const AddMedication = async (req, res, next) => {
       actionrequires,
     });
     await newMedication.save();
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json({ message: "Medication added successfully" });
   } catch (error) {
     next(error);
@@ -54,6 +59,11 @@ const AddMedication = async (req, res, next) => {
 const getALLMedication = async (req, res) => {
   try {
     const Medications = await Medication.find();
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json(Medications);
   } catch (error) {
     console.log(error);
@@ -63,6 +73,11 @@ const getALLMedication = async (req, res) => {
 const getMedication = async (req, res) => {
   try {
     const singleMedication = await Medication.findById(req.params.id);
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json(singleMedication);
   } catch (error) {
     console.log(error);
@@ -114,6 +129,11 @@ const updateMedication = async (req, res) => {
       auditplan,
       actionrequires,
     });
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.status(200).json({ message: `Medication updated successfully` });
   } catch (error) {
     next(error);
@@ -122,6 +142,11 @@ const updateMedication = async (req, res) => {
 const deleteMedication = async (req, res) => {
   try {
     await Medication.findByIdAndDelete(req.params.id);
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     return res.json({ message: `Medication deleted successfully` });
   } catch (error) {
     next(error);

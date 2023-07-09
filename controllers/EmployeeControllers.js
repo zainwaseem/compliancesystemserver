@@ -9,6 +9,11 @@ const AddEmployee = async (req, res, next) => {
       phone,
     });
     await newEmployee.save();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: "Employee added successfully" });
   } catch (error) {
     next(error);
@@ -18,6 +23,11 @@ const AddEmployee = async (req, res, next) => {
 const getALLEmployees = async (req, res) => {
   try {
     const allemployees = await Employee.find();
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(allemployees);
   } catch (error) {
     console.log(error);
@@ -27,6 +37,11 @@ const getALLEmployees = async (req, res) => {
 const getEmployee = async (req, res) => {
   try {
     const singleemp = await Employee.findById(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json(singleemp);
   } catch (error) {
     console.log(error);
@@ -45,6 +60,11 @@ const updateEmployee = async (req, res) => {
       email,
       phone,
     });
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.status(200).json({ message: `Employee updated successfully` });
   } catch (error) {
     next(error);
@@ -53,6 +73,11 @@ const updateEmployee = async (req, res) => {
 const deleteEmployee = async (req, res) => {
   try {
     await Employee.findByIdAndDelete(req.params.id);
+        res.setHeader(
+          "Access-Control-Allow-Origin",
+          "https://compliancesys.netlify.app"
+        );
+
     return res.json({ message: `Employee deleted successfully` });
   } catch (error) {
     next(error);

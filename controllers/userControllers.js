@@ -40,6 +40,11 @@ const register = async (req, res, next) => {
       active,
     });
     const user = await newUser.save();
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
+
     res.status(200).json({ message: `User added successfully` });
   } catch (error) {
     next(error);

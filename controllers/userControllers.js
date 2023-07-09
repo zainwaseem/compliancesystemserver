@@ -60,18 +60,20 @@ const login = async (req, res, next) => {
         message: "User not registered",
       });
     }
-    // const isMatchedPassword = await bcrypt.compare(password, user.password);
     if (user.password != password)
       return res.json({ message: "Email or Password is incorrect" });
-    // console.log(user.active)
     if (user.active == "false") {
       return res.json({ message: "Your Account has been Deactivated" });
     }
-    //  console.log(`matched`);
-
     const token = jwt.sign({ id: user._id }, "mysupersecret786", {
       expiresIn: "5d",
     });
+
+    // Set Access-Control-Allow-Origin header to allow requests from the specific origin
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
 
     return res.cookie("token", token, { httpOnly: true }).json({
       token: `You are logged in`,

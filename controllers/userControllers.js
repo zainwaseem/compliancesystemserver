@@ -4,16 +4,8 @@ import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
 const register = async (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
-  const { name, email, password, role, active } = req.body;
   try {
+    const { name, email, password, role, active } = req.body;
     if (name.match(/[0-9]/)) {
       return res.json({
         message: "Name can`t be a number",
@@ -55,16 +47,8 @@ const register = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
-  const { email, password } = req.body;
   try {
+    const { email, password } = req.body;
     if (!email || !password) {
       return res.json({
         message: "Please fill out the fields.",
@@ -89,12 +73,9 @@ const login = async (req, res, next) => {
       expiresIn: "5d",
     });
 
-    return res.json({
+    return res.cookie("token", token, { httpOnly: true }).json({
       token: `You are logged in`,
     });
-    // return res.cookie("token", token, { httpOnly: true }).json({
-    //   token: `You are logged in`,
-    // });
   } catch (error) {
     next(error);
   }
@@ -111,14 +92,6 @@ const getALLUsers = async (req, res, next) => {
 };
 
 const logout = async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
   if (req.cookies)
     return res
       .cookie("token", "", { httpOnly: true, expires: new Date(0) })
@@ -177,15 +150,7 @@ const deleteUser = async (req, res, next) => {
     next(error);
   }
 };
-const loggedIn = async (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "PUT, POST, GET, DELETE, PATCH, OPTIONS"
-  );
+const loggedIn = async (req, res, next) => {z
   try {
     const token = req.cookies.token;
     if (!token) return res.json(false);

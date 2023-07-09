@@ -21,13 +21,14 @@ const app = express();
 connectDB();
 const corsOptions = {
   origin: "https://compliancesys.netlify.app",
-  // origin: "http://localhost:3000",
-  // credentials: true,
-  //access-control-allow-credentials:true
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, GET OPTIONS,PUT,DELETE",
+  "Access-Control-Allow-Headers":
+    "Content-Type, X-Auth-Token,Origin,Authorization",
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-app.use(cors());
+// app.use(cors());
 
 // const corsOptions = {
 // origin: "http://localhost:3000",

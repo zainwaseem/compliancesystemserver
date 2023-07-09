@@ -89,9 +89,12 @@ const login = async (req, res, next) => {
       expiresIn: "5d",
     });
 
-    return res.cookie("token", token, { httpOnly: true }).json({
+    return res.json({
       token: `You are logged in`,
     });
+    // return res.cookie("token", token, { httpOnly: true }).json({
+    //   token: `You are logged in`,
+    // });
   } catch (error) {
     next(error);
   }

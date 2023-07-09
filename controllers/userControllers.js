@@ -150,13 +150,18 @@ const deleteUser = async (req, res, next) => {
     next(error);
   }
 };
-const loggedIn = async (req, res, next) => {z
+
+const loggedIn = async (req, res, next) => {
   try {
     const token = req.cookies.token;
     if (!token) return res.json(false);
     const decode = jwt.verify(token, "mysupersecret786");
     const id = decode.id;
     req.user = await User.findById(id);
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://compliancesys.netlify.app"
+    );
 
     return res.send(req.user.role);
     // res.send(true);

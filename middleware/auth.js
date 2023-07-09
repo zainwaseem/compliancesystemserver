@@ -8,7 +8,7 @@ const isAuthenticated = async (req, res, next) => {
       message: `You need to login to access this route`,
     });
   }
-  var decoded = jwt.verify(token, "zwsecrets786");
+  var decoded = jwt.verify(token, "mysupersecret786");
   const id = decoded.id;
   req.user = await User.findById(id);
   next();

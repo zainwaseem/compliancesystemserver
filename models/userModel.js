@@ -5,7 +5,9 @@ import mongoose from "mongoose";
 const usersSchema = new mongoose.Schema(
   {
     name: String,
-    email: { type: String },
+    email: { type: String }
+    ,
+    
     password: {
       type: String,
       minlength: [8, "8 characters must"],

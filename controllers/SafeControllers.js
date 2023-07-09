@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Safe from "../models/SafeModel.js";
 
 const AddSafe = async (req, res, next) => {
@@ -5,6 +6,7 @@ const AddSafe = async (req, res, next) => {
     const {
       serviceuser,
       address,
+      branch,
       Mobile,
       CarepurchasedPrivately,
       Carepackage,
@@ -42,6 +44,7 @@ const AddSafe = async (req, res, next) => {
     } = req.body;
     const newMedication = new Safe({
       serviceuser,
+      branch,
       address,
       Mobile,
       CarepurchasedPrivately,
@@ -81,7 +84,7 @@ const AddSafe = async (req, res, next) => {
     await newMedication.save();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: "Added successfully" });
@@ -95,7 +98,7 @@ const getALLSafe = async (req, res) => {
     const safes = await Safe.find();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(safes);
@@ -109,7 +112,7 @@ const getSafe = async (req, res) => {
     const singlesafe = await Safe.findById(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(singlesafe);
@@ -123,6 +126,7 @@ const updateSafe = async (req, res) => {
     serviceuser,
     address,
     Mobile,
+    branch,
     CarepurchasedPrivately,
     Carepackage,
     managerforassessment,
@@ -162,6 +166,7 @@ const updateSafe = async (req, res) => {
     await Safe.findByIdAndUpdate(req.params.id, {
       serviceuser,
       address,
+      branch,
       Mobile,
       CarepurchasedPrivately,
       Carepackage,
@@ -199,7 +204,7 @@ const updateSafe = async (req, res) => {
     });
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.status(200).json({ message: `Updated successfully` });
@@ -212,7 +217,7 @@ const deleteSafe = async (req, res) => {
     await Safe.findByIdAndDelete(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: `Deleted successfully` });

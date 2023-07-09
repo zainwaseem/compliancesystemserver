@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 const medicationSchema = new mongoose.Schema(
   {
     pharmacy: { type: String },
+    branch: { type: String },
+    dateAudit: { type: String },
+
     labelsprint: { type: String },
     dosageclear: { type: String },
     labelsdefaced: { type: String },

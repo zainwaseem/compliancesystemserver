@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Appraisal from "../models/AppraisalModel.js";
 
 const AddAppraisal = async (req, res, next) => {
@@ -201,10 +202,7 @@ const AddAppraisal = async (req, res, next) => {
       rows2,
     });
     await newAppraisal.save();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: "Appraisal added successfully" });
   } catch (error) {
@@ -215,10 +213,7 @@ const AddAppraisal = async (req, res, next) => {
 const getALLAppraisal = async (req, res) => {
   try {
     const Appraisals = await Appraisal.find();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(Appraisals);
   } catch (error) {
@@ -229,10 +224,7 @@ const getALLAppraisal = async (req, res) => {
 const getAppraisal = async (req, res) => {
   try {
     const singleAppraisal = await Appraisal.findById(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(singleAppraisal);
   } catch (error) {
@@ -441,10 +433,7 @@ const updateAppraisal = async (req, res) => {
       Name,
       rows2,
     });
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.status(200).json({ message: `Appraisal updated successfully` });
   } catch (error) {
@@ -454,10 +443,7 @@ const updateAppraisal = async (req, res) => {
 const deleteAppraisal = async (req, res) => {
   try {
     await Appraisal.findByIdAndDelete(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: `Appraisal deleted successfully` });
   } catch (error) {

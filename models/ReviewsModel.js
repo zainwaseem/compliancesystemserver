@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 const reviewSchema = new mongoose.Schema(
   {
     serviceuser: { type: String },
+    branch: { type: String },
+
     address: { type: String },
     namesignature: { type: String },
     banchaname: { type: String },

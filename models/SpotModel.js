@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 const spotSchema = new mongoose.Schema(
   {
     serviceuser: { type: String },
+    branch: { type: String },
+
     address: { type: String },
     Mobile: { type: String },
     NumberofHoursWeek: { type: String },

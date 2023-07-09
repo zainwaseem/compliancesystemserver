@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 // import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import { HEADER_URL } from "../HeaderUrl.js"
 
 const register = async (req, res, next) => {
   try {
@@ -42,7 +43,7 @@ const register = async (req, res, next) => {
     const user = await newUser.save();
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     res.status(200).json({ message: `User added successfully` });
@@ -77,7 +78,7 @@ const login = async (req, res, next) => {
     // Set Access-Control-Allow-Origin header to allow requests from the specific origin
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.cookie("token", token, { httpOnly: true }).json({
@@ -93,7 +94,7 @@ const getALLUsers = async (req, res, next) => {
     // .sort({ name: 1 });
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json(users);
@@ -105,7 +106,7 @@ const getALLUsers = async (req, res, next) => {
 const logout = async (req, res) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://compliancesys.netlify.app"
+    HEADER_URL
   );
 
   if (req.cookies)
@@ -126,7 +127,7 @@ const getUser = async (req, res, next) => {
     const user = await User.findById(req.params.id);
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json(user);
@@ -154,7 +155,7 @@ const updateUser = async (req, res, next) => {
     );
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json({ message: `User has been updated` });
@@ -173,7 +174,7 @@ const deleteUser = async (req, res, next) => {
     // console.log(daletedUser)
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json({ message: `User has been deleted` });
@@ -191,7 +192,7 @@ const loggedIn = async (req, res, next) => {
     req.user = await User.findById(id);
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.send(req.user.role);

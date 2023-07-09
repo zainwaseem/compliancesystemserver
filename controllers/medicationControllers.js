@@ -1,9 +1,11 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Medication from "../models/MedicationModel.js";
 
 const AddMedication = async (req, res, next) => {
   try {
     const {
       pharmacy,
+      branch,
       labelsprint,
       dosageclear,
       labelsdefaced,
@@ -13,6 +15,7 @@ const AddMedication = async (req, res, next) => {
       correctmedicine,
       medicinepolicy,
       allergies,
+      dateAudit,
       drinkoffered,
       medicineexpiry,
       speicalinstructions,
@@ -25,11 +28,13 @@ const AddMedication = async (req, res, next) => {
     } = req.body;
     const newMedication = new Medication({
       pharmacy,
+      branch,
       labelsprint,
       dosageclear,
       labelsdefaced,
       cautionswarnings,
       MDS,
+      dateAudit,
       riskassessment,
       correctmedicine,
       medicinepolicy,
@@ -47,7 +52,7 @@ const AddMedication = async (req, res, next) => {
     await newMedication.save();
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json({ message: "Medication added successfully" });
@@ -61,7 +66,7 @@ const getALLMedication = async (req, res) => {
     const Medications = await Medication.find();
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json(Medications);
@@ -75,7 +80,7 @@ const getMedication = async (req, res) => {
     const singleMedication = await Medication.findById(req.params.id);
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json(singleMedication);
@@ -87,11 +92,13 @@ const getMedication = async (req, res) => {
 const updateMedication = async (req, res) => {
   const {
     pharmacy,
+    branch,
     labelsprint,
     dosageclear,
     labelsdefaced,
     cautionswarnings,
     MDS,
+    dateAudit,
     riskassessment,
     correctmedicine,
     medicinepolicy,
@@ -110,6 +117,8 @@ const updateMedication = async (req, res) => {
   try {
     await Medication.findByIdAndUpdate(req.params.id, {
       pharmacy,
+      branch,
+      dateAudit,
       labelsprint,
       dosageclear,
       labelsdefaced,
@@ -131,7 +140,7 @@ const updateMedication = async (req, res) => {
     });
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.status(200).json({ message: `Medication updated successfully` });
@@ -144,7 +153,7 @@ const deleteMedication = async (req, res) => {
     await Medication.findByIdAndDelete(req.params.id);
     res.setHeader(
       "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
+      HEADER_URL
     );
 
     return res.json({ message: `Medication deleted successfully` });

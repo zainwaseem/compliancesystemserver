@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Review from "../models/ReviewsModel.js";
 
 const AddReview = async (req, res, next) => {
@@ -5,6 +6,7 @@ const AddReview = async (req, res, next) => {
     const {
       serviceuser,
       address,
+      branch,
       namesignature,
       banchaname,
       Datereview,
@@ -39,6 +41,7 @@ const AddReview = async (req, res, next) => {
     const newMedication = new Review({
       serviceuser,
       address,
+      branch,
       namesignature,
       banchaname,
       Datereview,
@@ -73,7 +76,7 @@ const AddReview = async (req, res, next) => {
     await newMedication.save();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: "Added successfully" });
@@ -87,7 +90,7 @@ const getALLReview = async (req, res) => {
     const Reviews = await Review.find();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(Reviews);
@@ -101,7 +104,7 @@ const getReview = async (req, res) => {
     const singleMedication = await Review.findById(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(singleMedication);
@@ -113,6 +116,7 @@ const getReview = async (req, res) => {
 const updateReview = async (req, res) => {
   const {
     serviceuser,
+    branch,
     address,
     namesignature,
     banchaname,
@@ -149,6 +153,7 @@ const updateReview = async (req, res) => {
   try {
     await Review.findByIdAndUpdate(req.params.id, {
       serviceuser,
+      branch,
       address,
       namesignature,
       banchaname,
@@ -183,7 +188,7 @@ const updateReview = async (req, res) => {
     });
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.status(200).json({ message: `Updated successfully` });
@@ -196,7 +201,7 @@ const deleteReview = async (req, res) => {
     await Review.findByIdAndDelete(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: `Deleted successfully` });

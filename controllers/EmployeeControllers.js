@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Employee from "../models/EmployeeModel.js";
 
 const AddEmployee = async (req, res, next) => {
@@ -11,7 +12,7 @@ const AddEmployee = async (req, res, next) => {
     await newEmployee.save();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: "Employee added successfully" });
@@ -25,7 +26,7 @@ const getALLEmployees = async (req, res) => {
     const allemployees = await Employee.find();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(allemployees);
@@ -39,7 +40,7 @@ const getEmployee = async (req, res) => {
     const singleemp = await Employee.findById(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(singleemp);
@@ -62,7 +63,7 @@ const updateEmployee = async (req, res) => {
     });
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.status(200).json({ message: `Employee updated successfully` });
@@ -75,7 +76,7 @@ const deleteEmployee = async (req, res) => {
     await Employee.findByIdAndDelete(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: `Employee deleted successfully` });

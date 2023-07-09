@@ -19,23 +19,25 @@ import * as dotenv from "dotenv";
 dotenv.config();
 const app = express();
 connectDB();
-const corsOptions = {
-  origin: "https://compliancesys.netlify.app",
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, GET OPTIONS,PUT,DELETE",
-  "Access-Control-Allow-Headers":
-    "Content-Type, X-Auth-Token,Origin,Authorization",
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+
+//   // origin: "https://compliancesys.netlify.app",
+//   "Access-Control-Allow-Origin": "*",
+//   "Access-Control-Allow-Methods": "POST, GET OPTIONS,PUT,DELETE",
+//   "Access-Control-Allow-Headers":
+//     "Content-Type, X-Auth-Token,Origin,Authorization",
+//   optionSuccessStatus: 200,
+// };
 // app.use(cors());
 
-// const corsOptions = {
-// origin: "http://localhost:3000",
-//   origin: "https://compliancesys.netlify.app",
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: "http://localhost:3000",
+  // origin: "https://compliancesys.netlify.app",
+  credentials: true,
+};
 // origin: "https://compliancesys.netlify.app/",
+app.use(cors(corsOptions));
 
 app.use(cors(corsOptions));
 app.use(express.json());

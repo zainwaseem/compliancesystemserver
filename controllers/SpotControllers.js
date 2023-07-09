@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js";
 import Spot from "../models/SpotModel.js";
 
 const AddSpot = async (req, res, next) => {
@@ -5,6 +6,7 @@ const AddSpot = async (req, res, next) => {
     const {
       serviceuser,
       address,
+      branch,
       Mobile,
       NumberofHoursWeek,
       NumberofVisitsWeek,
@@ -53,6 +55,7 @@ const AddSpot = async (req, res, next) => {
     } = req.body;
     const newMedication = new Spot({
       serviceuser,
+      branch,
       address,
       Mobile,
       NumberofHoursWeek,
@@ -101,10 +104,7 @@ const AddSpot = async (req, res, next) => {
       RecordActionsoutcome,
     });
     await newMedication.save();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: "Added successfully" });
   } catch (error) {
@@ -115,10 +115,7 @@ const AddSpot = async (req, res, next) => {
 const getALLSpot = async (req, res) => {
   try {
     const spots = await Spot.find();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(spots);
   } catch (error) {
@@ -129,10 +126,7 @@ const getALLSpot = async (req, res) => {
 const getSpot = async (req, res) => {
   try {
     const singleMedication = await Spot.findById(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(singleMedication);
   } catch (error) {
@@ -144,6 +138,7 @@ const updateSpot = async (req, res) => {
   const {
     serviceuser,
     address,
+    branch,
     Mobile,
     NumberofHoursWeek,
     NumberofVisitsWeek,
@@ -196,6 +191,7 @@ const updateSpot = async (req, res) => {
       serviceuser,
       address,
       Mobile,
+      branch,
       NumberofHoursWeek,
       NumberofVisitsWeek,
       NumberofCareWorkersWeek,
@@ -241,10 +237,7 @@ const updateSpot = async (req, res) => {
       Carercomingvisit,
       RecordActionsoutcome,
     });
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.status(200).json({ message: `Updated successfully` });
   } catch (error) {

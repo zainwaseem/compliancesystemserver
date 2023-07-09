@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 const safeGuardingSchema = new mongoose.Schema(
   {
     serviceuser: { type: String },
+    branch: { type: String },
+
     branchName: { type: String },
     personInvestigating: { type: String },
     serviceuserLocation: { type: String },

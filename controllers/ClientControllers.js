@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Client from "../models/ClientModel.js";
 
 const AddClient = async (req, res, next) => {
@@ -9,10 +10,7 @@ const AddClient = async (req, res, next) => {
       phone,
     });
     await newClient.save();
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      "https://compliancesys.netlify.app"
-    );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: "Client added successfully" });
   } catch (error) {
@@ -23,10 +21,7 @@ const AddClient = async (req, res, next) => {
 const getALLClients = async (req, res) => {
   try {
     const Clients = await Client.find();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(Clients);
   } catch (error) {
@@ -37,10 +32,7 @@ const getALLClients = async (req, res) => {
 const getClient = async (req, res) => {
   try {
     const singleClient = await Client.findById(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(singleClient);
   } catch (error) {
@@ -61,10 +53,7 @@ const updateClient = async (req, res) => {
       email,
       phone,
     });
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.status(200).json({ message: `Client updated successfully` });
   } catch (error) {
@@ -74,10 +63,7 @@ const updateClient = async (req, res) => {
 const deleteClient = async (req, res) => {
   try {
     await Client.findByIdAndDelete(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: `Client deleted successfully` });
   } catch (error) {

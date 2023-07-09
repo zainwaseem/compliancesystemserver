@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 const complaintSchema = new mongoose.Schema(
   {
     name: { type: String },
+    branch: { type: String },
+
     CpersonName: { type: String },
     status: { type: String, default: "pending" },
     complimentReference: { type: String },

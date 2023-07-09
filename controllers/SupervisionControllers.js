@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import Supervision from "../models/SupervisionModel.js";
 
 const AddSupervision = async (req, res, next) => {
@@ -68,7 +69,7 @@ const AddSupervision = async (req, res, next) => {
     await newSupervision.save();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: "Supervision added successfully" });
@@ -82,7 +83,7 @@ const getALLSupervision = async (req, res) => {
     const supervisions = await Supervision.find();
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(supervisions);
@@ -96,7 +97,7 @@ const getSupervision = async (req, res) => {
     const singleSupervision = await Supervision.findById(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json(singleSupervision);
@@ -172,7 +173,7 @@ const updateSupervision = async (req, res) => {
     });
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res
@@ -187,7 +188,7 @@ const deleteSupervision = async (req, res) => {
     await Supervision.findByIdAndDelete(req.params.id);
         res.setHeader(
           "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
+          HEADER_URL
         );
 
     return res.json({ message: `Supervision deleted successfully` });

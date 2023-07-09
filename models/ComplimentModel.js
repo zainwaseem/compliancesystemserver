@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 const complimentSchema = new mongoose.Schema(
   {
     name: { type: String },
+    branch: { type: String },
+
     complimentDate: { type: String },
     complimentReceived: { type: String },
     natureOfCompliment: { type: String },

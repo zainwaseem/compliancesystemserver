@@ -1,9 +1,11 @@
+import { HEADER_URL } from "../HeaderUrl.js"
 import SafeGuarding from "../models/SafeGuardingModel.js";
 
 const AddSafeGuarding = async (req, res, next) => {
   try {
     const {
       serviceuser,
+      
       branchName,
       personInvestigating,
       serviceuserLocation,
@@ -45,10 +47,10 @@ const AddSafeGuarding = async (req, res, next) => {
       Datecompletion,
     });
     await newSafeGuarding.save();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      HEADER_URL
+    );
 
     return res.json({ message: "Record added successfully" });
   } catch (error) {
@@ -59,10 +61,10 @@ const AddSafeGuarding = async (req, res, next) => {
 const getALLSafeGuarding = async (req, res) => {
   try {
     const safeGuardings = await SafeGuarding.find();
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      HEADER_URL
+    );
 
     return res.json(safeGuardings);
   } catch (error) {
@@ -73,10 +75,10 @@ const getALLSafeGuarding = async (req, res) => {
 const getSafeGuarding = async (req, res) => {
   try {
     const singleSafeGuarding = await SafeGuarding.findById(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      HEADER_URL
+    );
 
     return res.json(singleSafeGuarding);
   } catch (error) {
@@ -129,10 +131,10 @@ const updateSafeGuarding = async (req, res) => {
       Signature,
       Datecompletion,
     });
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      HEADER_URL
+    );
 
     return res.status(200).json({ message: `Record updated successfully` });
   } catch (error) {
@@ -142,10 +144,10 @@ const updateSafeGuarding = async (req, res) => {
 const deleteSafeGuarding = async (req, res) => {
   try {
     await SafeGuarding.findByIdAndDelete(req.params.id);
-        res.setHeader(
-          "Access-Control-Allow-Origin",
-          "https://compliancesys.netlify.app"
-        );
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      HEADER_URL
+    );
 
     return res.json({ message: `Deleted successfully` });
   } catch (error) {

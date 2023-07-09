@@ -20,6 +20,7 @@ router.get("/users", getALLUsers);
 // router.get("/users/:id", isAuthenticated, isAuthorized("owner"), getUser);
 // router.put("/users/:id", isAuthenticated, isAuthorized("owner"), updateUser);
 // router.delete("/users/:id", isAuthenticated, isAuthorized("owner"), deleteUser);
+router.delete("/users/:id", deleteUser);
 router.get("/loggedin", loggedIn);
 router.get("/logout", logout);
 

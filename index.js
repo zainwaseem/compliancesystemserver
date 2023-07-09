@@ -20,10 +20,17 @@ dotenv.config();
 const app = express();
 connectDB();
 const corsOptions = {
-  // origin: "http://localhost:3000",
   origin: "https://compliancesys.netlify.app",
-  credentials: true,
+  // origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
 };
+app.use(cors(corsOptions));
+// const corsOptions = {
+  // origin: "http://localhost:3000",
+//   origin: "https://compliancesys.netlify.app",
+//   credentials: true,
+// };
 // origin: "https://compliancesys.netlify.app/",
 
 app.use(cors(corsOptions));

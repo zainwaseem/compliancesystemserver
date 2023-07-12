@@ -1,4 +1,4 @@
-import { HEADER_URL } from "../HeaderUrl.js"
+import { HEADER_URL } from "../HeaderUrl.js";
 import Medication from "../models/MedicationModel.js";
 
 const AddMedication = async (req, res, next) => {
@@ -6,6 +6,7 @@ const AddMedication = async (req, res, next) => {
     const {
       pharmacy,
       branch,
+      serviceuser,
       labelsprint,
       dosageclear,
       labelsdefaced,
@@ -29,6 +30,7 @@ const AddMedication = async (req, res, next) => {
     const newMedication = new Medication({
       pharmacy,
       branch,
+      serviceuser,
       labelsprint,
       dosageclear,
       labelsdefaced,
@@ -50,10 +52,7 @@ const AddMedication = async (req, res, next) => {
       actionrequires,
     });
     await newMedication.save();
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      HEADER_URL
-    );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: "Medication added successfully" });
   } catch (error) {
@@ -64,10 +63,7 @@ const AddMedication = async (req, res, next) => {
 const getALLMedication = async (req, res) => {
   try {
     const Medications = await Medication.find();
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      HEADER_URL
-    );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(Medications);
   } catch (error) {
@@ -78,10 +74,7 @@ const getALLMedication = async (req, res) => {
 const getMedication = async (req, res) => {
   try {
     const singleMedication = await Medication.findById(req.params.id);
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      HEADER_URL
-    );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json(singleMedication);
   } catch (error) {
@@ -98,6 +91,7 @@ const updateMedication = async (req, res) => {
     labelsdefaced,
     cautionswarnings,
     MDS,
+    serviceuser,
     dateAudit,
     riskassessment,
     correctmedicine,
@@ -136,12 +130,10 @@ const updateMedication = async (req, res) => {
       capsules,
       raisedGP,
       auditplan,
+      serviceuser,
       actionrequires,
     });
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      HEADER_URL
-    );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.status(200).json({ message: `Medication updated successfully` });
   } catch (error) {
@@ -151,10 +143,7 @@ const updateMedication = async (req, res) => {
 const deleteMedication = async (req, res) => {
   try {
     await Medication.findByIdAndDelete(req.params.id);
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      HEADER_URL
-    );
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
     return res.json({ message: `Medication deleted successfully` });
   } catch (error) {

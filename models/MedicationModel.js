@@ -4,6 +4,7 @@ const medicationSchema = new mongoose.Schema(
     pharmacy: { type: String },
     branch: { type: String },
     dateAudit: { type: String },
+    serviceuser: { type: String },
 
     labelsprint: { type: String },
     dosageclear: { type: String },

@@ -1,4 +1,4 @@
-import { HEADER_URL } from "../HeaderUrl.js"
+import { HEADER_URL } from "../HeaderUrl.js";
 import Appraisal from "../models/AppraisalModel.js";
 
 const AddAppraisal = async (req, res, next) => {
@@ -6,6 +6,7 @@ const AddAppraisal = async (req, res, next) => {
     const {
       Appraise,
       Jobtitle,
+      branch,
       Appraiser,
       currentposition,
       CompletionDate,
@@ -105,6 +106,7 @@ const AddAppraisal = async (req, res, next) => {
     const newAppraisal = new Appraisal({
       Appraise,
       Jobtitle,
+      branch,
       Appraiser,
       currentposition,
       CompletionDate,
@@ -331,6 +333,7 @@ const updateAppraisal = async (req, res) => {
     SignatureAppraiser,
     Name,
     rows2,
+    branch,
   } = req.body;
 
   try {
@@ -432,6 +435,7 @@ const updateAppraisal = async (req, res) => {
       SignatureAppraiser,
       Name,
       rows2,
+      branch,
     });
     res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 

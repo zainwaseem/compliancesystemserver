@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const appraisalSchema = new mongoose.Schema(
   {
     Appraise: { type: String },
+    branch: { type: String },
     Jobtitle: { type: String },
     Appraiser: { type: String },
     currentposition: { type: String },

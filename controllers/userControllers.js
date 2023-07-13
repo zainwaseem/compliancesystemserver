@@ -17,14 +17,6 @@ const register = async (req, res, next) => {
         message: "Please fill out the fields.",
       });
     }
-    if (role == "role") {
-      return res.json({
-        message: "Select a role please.",
-      });
-    }
-    if (password.length < 8) {
-      return res.json({ message: "Password must be at least 8 characters" });
-    }
 
     const userExist = await User.findOne({ email });
     if (userExist) {
@@ -65,18 +57,16 @@ const login = async (req, res, next) => {
     }
     if (user.password != password)
       return res.json({ message: "Email or Password is incorrect" });
-    if (user.active == "false") {
-      return res.json({ message: "Your Account has been Deactivated" });
-    }
-    const token = jwt.sign({ id: user._id }, "mysupersecret786", {
-      expiresIn: "5d",
-    });
+    // const token = jwt.sign({ id: user._id }, "mysupersecret786", {
+    //   expiresIn: "5d",
+    // });
 
     // Set Access-Control-Allow-Origin header to allow requests from the specific origin
-    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
-    return res.cookie("token", token).json({
-      token: `You are logged in`,
-    });
+    // res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
+    // return res.cookie("token", token).json({
+    // token: `You are logged in`,
+    // });
+    res.json({ data: user });
   } catch (error) {
     next(error);
   }

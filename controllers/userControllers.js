@@ -170,7 +170,7 @@ const loggedIn = async (req, res, next) => {
     req.user = await User.findById(id);
     res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
 
-    return res.send(req.user.role);
+    return res.send(req.user);
     // res.send(true);
   } catch (err) {
     return res.json(false);

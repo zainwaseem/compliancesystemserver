@@ -62,7 +62,7 @@ const login = async (req, res, next) => {
     // });
 
     // Set Access-Control-Allow-Origin header to allow requests from the specific origin
-    // res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
+    res.setHeader("Access-Control-Allow-Origin", HEADER_URL);
     // return res.cookie("token", token).json({
     // token: `You are logged in`,
     // });
